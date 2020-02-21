@@ -74,7 +74,7 @@ def filter_human_images(img_dir, face_finder):
     return num_human, num_inhuman, num_corrupted
 
 
-def download_emotions(emotion_map, data_dir, driver_dir, emotion_limit=2000, synonym_limit=1000):
+def download_emotions(emotion_map, data_dir, driver_dir, emotion_limit=100, synonym_limit=100):
     """Download the images for each emotion class
 
     This function uses the `google_images_download` package to run a Google Images query, retrieve the results,
@@ -180,10 +180,10 @@ def download_fake_imagenet(labels, data_dir, driver_dir, label_limit=10):
 
 
 if __name__ == '__main__':
-    chrome_driver = '/home/mchobanyan/data/emotion/chromedriver'
+    chrome_driver = '/home/alokzmp/Documents/perception/datasets/emotion/chromedriver'
 
     # download the emotion data
-    data_dir = '/home/mchobanyan/data/emotion/images/imagenet/'
+    data_dir = '/home/alokzmp/Documents/perception/datasets/emotion/images/imagenet/'
     emotions = {'angry': ['angry', 'furious', 'resentful', 'irate'],
                 'disgusted': ['disgusted', 'sour', 'grossed out'],
                 'happy': ['happy', 'smiling', 'cheerful', 'elated', 'joyful'],
@@ -193,9 +193,9 @@ if __name__ == '__main__':
 
     # download the pseudo Imagenet data
     imagenet_labels = []
-    with open('/home/mchobanyan/data/emotion/imagenet_labels.txt', 'r') as file:
+    with open('/home/alokzmp/Documents/perception/datasets/emotion/imagenet_labels.txt', 'r') as file:
         for line in file:
             imagenet_labels.append(line.strip())
-    data_dir = '/home/mchobanyan/data/emotion/images/imagenet/'
-    imagenet_label_file = '/home/mchobanyan/data/emotion/imagenet_labels.txt'
+    data_dir = '/home/alokzmp/Documents/perception/datasets/emotion/images/imagenet/'
+    imagenet_label_file = '/home/alokzmp/Documents/perception/datasets/emotion/imagenet_labels.txt'
     download_fake_imagenet(imagenet_labels, data_dir, chrome_driver)
